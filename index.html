@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Station</title>
+</head>
+<body>
+    <h1>Weather Data</h1>
+    <ul>
+        {% for data in weather_data %}
+            <li>Date: {{ data.date }}, Temperature: {{ data.temperature }}°C, Humidity: {{ data.humidity }}%</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
