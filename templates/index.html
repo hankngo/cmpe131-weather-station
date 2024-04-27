@@ -7,6 +7,13 @@
 </head>
 <body>
     <h1>Weather Data</h1>
+    <form action="/add" method="post">
+        <label for="temperature">Temperature:</label>
+        <input type="text" id="temperature" name="temperature" placeholder="Enter temperature">
+        <label for="humidity">Humidity:</label>
+        <input type="text" id="humidity" name="humidity" placeholder="Enter humidity">
+        <button type="submit">Add Weather Data</button>
+    </form>
     <ul>
         {% for data in weather_data %}
             <li>Date: {{ data.date }}, Temperature: {{ data.temperature }}°C, Humidity: {{ data.humidity }}%</li>

@@ -1,9 +1,8 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import datetime
 
 app = Flask(__name__)
 
-# Simulated in-memory database
 weather_data = []
 
 @app.route('/')
@@ -12,17 +11,15 @@ def home():
 
 @app.route('/add', methods=['POST'])
 def add_weather_data():
+    temperature = request.form['temperature']
+    humidity = request.form['humidity']
     data = {
         'date': datetime.datetime.now(),
-        'temperature': request.json['temperature'],
-        'humidity': request.json['humidity']
+        'temperature': temperature,
+        'humidity': humidity
     }
     weather_data.append(data)
-    return jsonify(data)
-
-@app.route('/data')
-def get_weather_data():
-    return jsonify(weather_data)
+    return redirect(url_for('home'))  # Redirect to the home page to see the updated list
 
 if __name__ == '__main__':
     app.run(debug=True)
