@@ -1,8 +1,5 @@
 import pytest
 from app import app, weather_data
-import sys
-print(sys.path)
-
 
 @pytest.fixture
 def client():
